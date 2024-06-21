@@ -8,7 +8,7 @@ const Port = process.env.PORT
 const smtpPort = process.env.SMTP_PORT
 const userId = process.env.SMTP_EMAIL
 const passkey = process.env.SMTP_PASSWORD
-const False = process.env.SMTP_SECURITY
+const Gmail = process.env.SMTP_SERVICE
 const app = express();
 // let corsOptions = {
 //   origin:"https://nodemailer-frontend.vercel.app",
@@ -34,10 +34,10 @@ app.use("/", router);
 app.listen(Port, 
 () => console.log(`Server is runining on port ${Port}`));
 
-const contactEmail = nodemailer.createTransport({
-  service: "gmail",
+const contactEmail =nodemailer.createTransport({
+  service: Gmail,
   port:smtpPort,
-  secure: False,
+  secure: false,
     auth: {
     user: userId,
     pass: passkey,
